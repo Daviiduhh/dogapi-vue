@@ -1,5 +1,5 @@
 <template>
-  <div class="fluid-container bg-dark">
+  <main class="fluid-container">
     <div class="container p-5 text-center">
       <h1 class="text-center text-light pb-5">Dog API</h1>
       <img
@@ -14,9 +14,9 @@
       </button>
       <p class="text-light">Has visto {{ counter }} perritos</p>
     </div>
-  </div>
+  </main>
 
-  <footer class="fluid-container bg-dark p-5">
+  <footer class="fluid-container p-5">
     <p class="text-light text-center">
       Powered by
       <a href="https://daviiduhh.com" class="daviiduhh">daviiduhh</a>
@@ -69,6 +69,17 @@ export default {
 </script>
 
 <style>
+body {
+  background-color: #282c34 !important;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .container {
   display: flex;
   flex-direction: column;
