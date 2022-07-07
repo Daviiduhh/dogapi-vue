@@ -9,9 +9,9 @@
   <main class="fluid-container">
     <div class="container p-3 text-center">
       <Zen v-if="mode == 'zen'" :dogImgs="dogImgs" :counter="sawDogs" :loading="loading"
-        @cambiarPerrito="cambiarPerrito" />
-      <Pro v-else :dogImgs="dogImgs" :counter="sawDogs" :loading="loading"
-        @cambiarPerrito="cambiarPerrito" />
+        @siguientePerrito="siguientePerrito" />
+      <Pro v-else :dogImgs="dogImgs" :counter="sawDogs" :loading="loading" @siguientePerrito="siguientePerrito"
+        @anteriorPerrito="anteriorPerrito" />
     </div>
   </main>
 
@@ -34,7 +34,7 @@ onMounted(() => {
   requestData();
 })
 
-const emit = defineEmits(['cambiarPerrito'])
+const emit = defineEmits(['siguientePerrito', 'anteriorPerrito'])
 
 const mode = ref('zen')
 const loading = ref(false)
@@ -66,10 +66,16 @@ function requestData() {
   console.log(dogImgs);
 }
 
-function cambiarPerrito() {
+function siguientePerrito() {
   sawDogs.value++;
   if (sawDogs.value === 50) {
     requestData();
+  }
+}
+
+function anteriorPerrito() {
+  if (sawDogs.value > 1) {
+    sawDogs.value--;
   }
 }
 </script>
