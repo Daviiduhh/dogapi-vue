@@ -6,7 +6,6 @@
     <button v-on:click="$emit('siguientePerrito')" class="btn btn-light btn-lg m-5">
         Ver más perritos
     </button>
-    <p class="text-light">Has visto {{ counter }} perritos</p>
 </template>
 
 <script>
@@ -26,6 +25,7 @@ export default {
     },
     components: {
         Loading,
-    }
+    },
+    emits: ['siguientePerrito']
 };
 </script>

@@ -1,17 +1,17 @@
 <template>
   <header class="header p-3">
     <h1 class="text-center text-light px-3">Dog API</h1>
-    <div class="header__mode px-3">
-      <span class="text-light">Mode: </span>
-      <button class="btn btn-info text-capitalize" v-text="mode" @click="changeMode"></button>
+    <div class="header__mode px-3 d-flex align-items-center">
+      <h5 class="text-light m-0">Mode: </h5>
+      <button class="btn btn-info text-capitalize mx-3" v-text="mode" @click="changeMode"></button>
     </div>
   </header>
   <main class="fluid-container">
     <div class="container p-3 text-center">
       <Zen v-if="mode == 'zen'" :dogImgs="dogImgs" :counter="sawDogs" :loading="loading"
         @siguientePerrito="siguientePerrito" />
-      <Pro v-else :dogImgs="dogImgs" :counter="sawDogs" :loading="loading" @siguientePerrito="siguientePerrito"
-        @anteriorPerrito="anteriorPerrito" />
+      <Pro v-else :dogImgs="dogImgs" :counter="sawDogs" :loading="loading" @siguientePerrito="siguientePerrito" />
+      <p class="text-light">Has visto {{ sawDogs }} perritos</p>
     </div>
   </main>
 
@@ -34,7 +34,7 @@ onMounted(() => {
   requestData();
 })
 
-const emit = defineEmits(['siguientePerrito', 'anteriorPerrito'])
+const emit = defineEmits(['siguientePerrito', ''])
 
 const mode = ref('zen')
 const loading = ref(false)
@@ -70,12 +70,6 @@ function siguientePerrito() {
   sawDogs.value++;
   if (sawDogs.value === 50) {
     requestData();
-  }
-}
-
-function anteriorPerrito() {
-  if (sawDogs.value > 1) {
-    sawDogs.value--;
   }
 }
 </script>
