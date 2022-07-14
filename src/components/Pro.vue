@@ -4,12 +4,14 @@
     <Loading class="loading" v-show="loading" />
     <p class="loading text-light" v-show="loading">Loading...</p>
     <div>
-        <button v-on:click="decrease" class="btn btn-light btn-lg m-5">
-            Anterior
-        </button>
-        <button v-on:click="increase" class="btn btn-light btn-lg m-5">
-            Siguiente
-        </button>
+        <div class="d-flex">
+            <button v-on:click="decrease" class="btn btn-light btn-lg m-5">
+                Anterior
+            </button>
+            <button v-on:click="increase" class="btn btn-light btn-lg m-5">
+                Siguiente
+            </button>
+        </div>
         <p class="text-light">Estas viendo el perrito {{ index }} de {{ counter }}</p>
     </div>
 </template>
@@ -26,7 +28,7 @@ export default {
     },
     methods: {
         increase() {
-            if(this.index == this.counter) {
+            if (this.index == this.counter) {
                 this.$emit('siguientePerrito');
             }
             this.index++;
